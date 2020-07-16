@@ -16,32 +16,28 @@
       </div>
     </div>
 
-    <%= form_tag do %>
-      <div class="simple-form">
-        <div class="simple-form__input">
-          <input class="form-control form-control-lg" type="text" placeholder="o que procura?">
-        </div>
-        <div class="simple-form__btn">
-          <button type="submit" class="btn btn-outline-primary btn-lg">Pesquisar</button>
-        </div>
+    <div class="simple-form">
+      <div class="simple-form__input">
+        <input class="form-control form-control-lg" type="text" id='simple-search' placeholder="o que procura?">
       </div>
+    </div>
 
-      <div class="advanced-form" style="display:none;">
-        Entradas do usuário para pesquisar uma coleção de geradores de energia com base nas recomendações fornecidas e melhor custo de frete.
-      </div>
-    <% end %>
+    <div class="advanced-form" style="display:none;">
+      <span><%= t 'activerecord.attributes.power_generator.manufacturer'%>: </span>
+      <%= select('power_generator', 'manufacturer_eq', PowerGenerator.pluck(:manufacturer).uniq, { include_blank: true }, class: 'search-input') %>
+
+      <span><%= t 'activerecord.attributes.power_generator.structure_type'%>: </span>
+      <%= select('power_generator', 'structure_type_eq', PowerGenerator.structure_types.to_a.map { |w| [t("enums.power_generator.structure_type.#{w[0]}"), w[1]] }, { include_blank: true }, class: 'search-input') %>
+    </div>
+  </div>
+  <div class='sort-power-generators'>
+    <span>Ordenar Por: </span>
+    <%= select('power_generator', 'order_by', PowerGenerator::SORT_BY.map{|e| e}, { include_blank: false }, class: 'search-input') %>
   </div>
 
   <div class="container" >
-    <% @power_generators.each do |power_generator| %>
-      <div class="box card power_generator-card">
-        <%= image_tag power_generator.image_url, class: 'power_generator-card__img' %>
-        <div class="power_generator-card__body">
-          <h2><%= power_generator.name.upcase %></h2>
-          <p class="power_generator-card__price"><%= number_to_currency(power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
-          <p><strong>Descrição: </strong><%= power_generator.description %></p>
-        </div>
-      </div>
-    <% end %>
+    <div id='power-generators-list'></div>
   </div>
 </div>
+
+<%= render partial: 'layouts/partials/modal' %>

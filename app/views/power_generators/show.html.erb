@@ -1,0 +1,16 @@
+<div class="power-generator-info">
+  <%= hidden_field_tag :power_generator_id, @power_generator.id %>
+  <%= image_tag @power_generator.image_url, class: 'power_generator-card__img' %>
+  <div class="power-generator-data">
+    <h2><%= @power_generator.name.upcase %></h2>
+    <p class="power_generator-card__price"><%= number_to_currency(@power_generator.price, unit: "R$ ", precision: 2, :separator => ",", :delimiter => ".") %></p>
+    <p><strong>Descrição: </strong><%= @power_generator.description %></p>
+  </div>
+</div>
+<div class='power-generator-calcule'>
+  <div>
+  <span>Calcular Frete:</span>
+    <%= text_field_tag :cep, '', class: 'cep_input', maxlength: 8 %>
+  </div>
+  <span class='freight-value'></span>
+</div>

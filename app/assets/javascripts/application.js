@@ -22,6 +22,7 @@ function ready(event) {
       $('.advanced-form').hide();
     }
     else if (this.value === 'advanced') {
+      PowerGenerators.clearSearch();
       $('.simple-form').hide();
       $('.advanced-form').show();
     }

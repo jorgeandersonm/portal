@@ -1,0 +1,33 @@
+.open-calculate-freight {
+  text-decoration: none;
+  color: black;
+}
+
+.power-generator-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.power-generator-data {
+  margin-left: 50px;
+}
+
+.power-generator-calcule {
+  margin-top: 20px;
+  text-align: center;
+  flex-direction: column;
+}
+
+.freight-value {
+  margin-top: 20px;
+}
+
+.empty-list {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.sort-power-generators {
+  margin: 25px 0px;
+}

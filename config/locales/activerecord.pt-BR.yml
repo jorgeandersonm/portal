@@ -1,0 +1,17 @@
+pt-BR:
+  enums:
+    power_generator:
+      structure_type:
+        metalico: 'Metálico'
+        ceramico: 'Cerâmico'
+        fibrocimento: 'Fibrocimento'
+        laje: 'Laje'
+        solo: 'Solo'
+        trapezoidal: 'Trapezoidal'
+  activerecord:
+    models:
+      power_generator: 'Gerador de Energia'
+    attributes:
+      power_generator:
+        manufacturer: 'Fabricante'
+        structure_type: 'Tipo de Estrutura'
